@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Transcription App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎙️ Audio Transcription App</h1>
+            <p class="subtitle">Record audio and get instant transcriptions</p>
+        </header>
+
+        <div class="recording-section">
+            <div class="recorder-card">
+                <div class="status-indicator" id="statusIndicator">
+                    <span class="status-dot"></span>
+                    <span id="statusText">Ready to record</span>
+                </div>
+
+                <div class="controls">
+                    <button id="recordBtn" class="btn btn-primary">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                            <line x1="12" y1="19" x2="12" y2="23"></line>
+                            <line x1="8" y1="23" x2="16" y2="23"></line>
+                        </svg>
+                        Start Recording
+                    </button>
+                    <button id="stopBtn" class="btn btn-danger" disabled>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="6" y="6" width="12" height="12" rx="2"></rect>
+                        </svg>
+                        Stop Recording
+                    </button>
+                </div>
+
+                <div id="audioPlayback" class="audio-playback" style="display: none;">
+                    <h3>Preview Recording</h3>
+                    <audio id="audioPlayer" controls></audio>
+                    <button id="uploadBtn" class="btn btn-success">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        Upload & Transcribe
+                    </button>
+                </div>
+
+                <div id="loadingIndicator" class="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Transcribing audio...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="transcriptions-section">
+            <h2>📝 Transcriptions</h2>
+            <div id="transcriptionsList" class="transcriptions-list">
+                <p class="empty-state">No transcriptions yet. Record your first audio message!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
